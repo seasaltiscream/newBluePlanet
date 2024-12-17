@@ -17,3 +17,6 @@
             </div>
          </div>
       </div>
+
+<!-- the about us section itself -->
+<!-- basically its the turtle and the text thingy at home, feel free to add more -->

@@ -1,3 +1,8 @@
+
+
+<!-- about us, following the usual layout -->
+ <!-- if u wanna edit the about us section itself, its at about.blade.php -->
+
 <!DOCTYPE html>
 <html lang="en">
    <head>

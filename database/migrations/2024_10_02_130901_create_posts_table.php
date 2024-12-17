@@ -21,6 +21,14 @@ return new class extends Migration
             $table->string('user_id')->nullable();
             $table->string('post_status')->nullable();
             $table->string('userType')->nullable();
+            
+            // New fields for video
+            $table->string('video_file')->nullable(); // For video file
+            $table->string('video_link')->nullable(); // For video link (e.g., YouTube URL)
+
+            // Add thumbnail column
+            $table->string('thumbnail')->nullable(); // For storing thumbnail file name
+            
             $table->timestamps();
         });
     }

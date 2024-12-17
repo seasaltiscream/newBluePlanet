@@ -17,3 +17,7 @@
     <script src="Admincss/vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="Admincss/js/charts-home.js"></script>
     <script src="Admincss/js/front.js"></script>
+
+
+
+    <!-- ngl idk much abt this shit -->

@@ -15,18 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-
-            $table->string('phone')->nullable;
-            //new field we make ourselves
+            $table->string('phone')->nullable();
             $table->string('userType')->default('user');
-            //new field, userType^, coz there will be both admin and cust/user
-            
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            // $table->string('usertype')->default('user');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
+            // Profile photo field
+            $table->string('profile_photo_path', 2048)->nullable();  // Allows storing the file path (URL or local path)
             $table->timestamps();
         });
 

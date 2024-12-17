@@ -1,3 +1,13 @@
+
+
+
+<!-- I fr dk what does each shit do -->
+<!-- so feel free to do whatever shit u want -->
+<!-- if ur confused what is this for, its basically storing  ur styles and scripts -->
+
+
+
+
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dark Bootstrap Admin </title>

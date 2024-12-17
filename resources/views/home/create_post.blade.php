@@ -1,10 +1,12 @@
+<!-- a page where u wanna make ur own post -->
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
      <style type="text/css">
         .div_design{
             text-align: center;
-              padding: 30px;
+            padding: 30px;
         }
 
         .title_design{
@@ -31,17 +33,18 @@
         @include('home.homecss')
    </head>
    <body>
+        <!-- I forgot pls do note that make sure not to delete the sweetalert -->
         @include('sweetalert::alert')
         
-      <!-- header section start -->
       <div class="header_section">
         @include('home.header')
-      <!-- </div> -->   
 
+      <!-- fields for filling out ur post -->
       <div class="div_design">
         <h class="title_design">Add Post</h>
         <form action="{{url('user_post')}}" method="POST" enctype="multipart/form-data"> 
-            @csrf
+            @csrf <!-- idk what @csrf actually does but dont delete it -->
+            
             <div class="field_design">
                 <label>Title</label>
                  <input type="text" name="title">
@@ -58,11 +61,16 @@
             </div>
 
             <div class="field_design">
-                <!-- <label>Post</label> -->
-                <input type="submit" value="Add Post" class="btn btn-outline -secondary">
+                <label>Video Link (YouTube)</label>
+                <input type="text" name="video_link">
+            </div>
+
+            <div class="field_design">
+                <input type="submit" value="Add Post" class="btn btn-outline-secondary">
             </div>
         </form>
       </div>
+      <!-- ----------------------------------- -->
   
        @include('home.footer')
 </html>

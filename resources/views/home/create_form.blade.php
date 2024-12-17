@@ -1,5 +1,12 @@
+
+
+<!-- a page where u wanna make ur own form -->
+
+
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- yea basically I gpt the design so -->
    <head>
      <style type="text/css">
         .div_design{
@@ -30,18 +37,23 @@
       <!-- basic -->
         @include('home.homecss')
    </head>
+    <!-- idk how bootstrap works so -->
+
+
    <body>
         @include('sweetalert::alert')
         
       <!-- header section start -->
       <div class="header_section">
         @include('home.header')
-      <!-- </div> -->   
 
+
+      <!-- pretty much the fields for filling out ur form -->
       <div class="div_design">
         <h class="title_design">Add Volunteer Form</h>
         <form action="{{url('user_form')}}" method="POST" enctype="multipart/form-data"> 
-            @csrf
+            @csrf 
+            <!-- idk what @csrf actually does but dont delete it -->
             <div class="field_design">
                 <label>Title</label>
                  <input type="text" name="title">
@@ -58,11 +70,17 @@
             </div>
 
             <div class="field_design">
-                <!-- <label>Post</label> -->
+                <label>Upload Image</label>
+                <input type="file" name="image">
+            </div>
+
+
+            <div class="field_design">
                 <input type="submit" value="Add Post" class="btn btn-outline -secondary">
             </div>
         </form>
       </div>
+      <!-- -------------------------------------------------- -->
   
        @include('home.footer')
 </html>
