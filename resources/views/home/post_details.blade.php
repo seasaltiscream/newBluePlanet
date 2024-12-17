@@ -3,6 +3,15 @@
 <head>
     <base href="/public">
     @include('home.homecss')
+    <style>
+        .post-content, .additional-info {
+            margin-top: 20px;
+        }
+        .post-content h4, .additional-info h4 {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <div class="header_section">
@@ -35,6 +44,8 @@
                 <div style="margin-top: 20px;">
                     <iframe width="560" height="315" src="{{ $embedUrl }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
+            @else
+                <p>Sorry, this video link is not valid.</p>
             @endif
 
         <!-- If only video link exists, show YouTube thumbnail and embed the video -->
@@ -59,6 +70,8 @@
                 <div style="margin-top: 20px;">
                     <iframe width="560" height="315" src="{{ $embedUrl }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
+            @else
+                <p>Sorry, this video link is not valid.</p>
             @endif
 
         <!-- If only image exists, show the image -->
@@ -76,7 +89,7 @@
 
         <!-- Additional post content (like post details) -->
         @if($post->content)
-            <div style="margin-top: 20px;">
+            <div class="post-content">
                 <h4>Post Content</h4>
                 <p>{{$post->content}}</p>
             </div>
@@ -84,7 +97,7 @@
 
         <!-- Display any additional user information or features -->
         @if($post->additional_info)
-            <div style="margin-top: 20px;">
+            <div class="additional-info">
                 <h4>Additional Information</h4>
                 <p>{{$post->additional_info}}</p>
             </div>

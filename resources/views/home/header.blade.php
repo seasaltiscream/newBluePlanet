@@ -1,80 +1,120 @@
-
-<!-- This whole section I have 0 clue what it doing here -->
+<!-- This whole section is the main header structure -->
 <div class="header_main">
 
-
-            <!-- so this is basically the haburger menu thingy when u make ur web smaller (try inspect to see what I mean) -->
-            <div class="mobile_menu">
-               <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                  <div class="logo_mobile"><a href="index.html"><img src="images/logo.png"></a></div>
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNav">
-                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                           <a class="nav-link" href="{{ url('/') }}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link" href="services.html">Volunteer</a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link " href="blog.html">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                           <a class="nav-link " href="contact.html">Contact</a>
-                        </li>
-                        <!-- as for the buttons, I havent followed the og one so if ur not bothered, tambahin dong (just copas and make sure the href is correct) -->
-                     </ul>
-                  </div>
-               </nav>
+    <!-- Mobile Menu for responsive design (Hamburger menu for smaller screens) -->
+    <div class="mobile_menu">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- Mobile Logo: A clickable logo that links to the homepage -->
+            <div class="logo_mobile">
+                <a href="index.html"><img src="images/logo.png"></a> <!-- Modify the 'href' to your homepage URL -->
             </div>
 
-            <!-- the OG header -->
-            <div class="container-fluid">
-               <div class="logo">
-                  <div class="fs-1">
-                     <a class= "text-white " href="{{ url('/') }}">Blue Planet</a>
-                  </div>
-               </div>
+            <!-- Toggle Button: For collapsing the menu when the screen is small -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <!-- basically the things at the header -->
-               <div class="menu_main">
-                  <ul>
-                     <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                     <li><a href="{{ url('about_us') }}">About</a></li>
-                      <li><a href="{{ url('blog_posts') }}">Blog</a></li>
-                     <li><a href="{{ url('volunteer_posts') }}">Volunteer</a></li>
-                     @if (Route::has('login'))
-                     @auth
-                     <li>
-                     <x-app-layout>
-                     </x-app-layout>
-                     </li>
-                     <!-- idk what does x app layout do but it has something to do with AppLayout.php at view\components -->
-
-                     <li><a href="{{url('my_post')}}">My Post</a></li>
-                     <li><a href="{{url('create_post')}}">Create Post</a></li>
-                     <li><a href="{{url('my_form')}}">My Form</a></li>
-                     <li><a href="{{url('create_form')}}">Create Form</a></li>
-                     <li><a href="{{ url('user_profile') }}">Profile</a></li>
-                     @else
-                     <li><a href="{{route('login')}}">Login</a></li>
-                     <li><a href="{{route('register')}}">Register</a></li>
-                     @endauth
-                     @endif
-                     <!-- if u think its a struggle to make all the buttons there, I think u can make 2 dropdowns -->
-                     <!-- 1st dropdown, Post (childs: view all posts, my posts, make posts) -->
-                     <!-- 2nd dropdown, form (childs: view all form, my form, make form) -->
-                     <!-- pls make sure that the @ shits not scattered somewhere else -->
-
-
-                  </ul>
-               </div>
-               <!-- basically the things at the header -->
-
+            <!-- Collapsible Navigation Links: These links show when the mobile menu is expanded -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- Home Link: Directs to the homepage -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/') }}">Home</a> <!-- Modify the 'href' to match your homepage route -->
+                    </li>
+                    <!-- About Link: Directs to the About page -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a> <!-- Modify the 'href' to match your About page -->
+                    </li>
+                    <!-- Volunteer Link: Directs to the Volunteer page -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Volunteer</a> <!-- Modify the 'href' to match your Volunteer page -->
+                    </li>
+                    <!-- Blog Link: Directs to the Blog page -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a> <!-- Modify the 'href' to match your Blog page -->
+                    </li>
+                    <!-- Contact Link: Directs to the Contact page -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a> <!-- Modify the 'href' to match your Contact page -->
+                    </li>
+                    <!-- Additional buttons: You can add other buttons here -->
+                </ul>
             </div>
-         </div>
+        </nav>
+    </div>
+
+    <!-- Original Header (Standard View for Larger Screens) -->
+    <div class="container-fluid">
+        <!-- Main Logo: A clickable logo that links to the homepage -->
+        <div class="logo">
+            <div class="fs-1">
+                <a class="text-white" href="{{ url('/') }}">Blue Planet</a> <!-- Modify the 'href' to your homepage route -->
+            </div>
+        </div>
+
+        <!-- Main Menu: The primary navigation links -->
+        <div class="menu_main">
+            <ul>
+                <!-- Home Link: Directs to the homepage -->
+                <li class="active"><a href="{{ url('/') }}">Home</a> <!-- Modify the 'href' to match your homepage route -->
+                </li>
+
+                <!-- About Us Link: Directs to the About Us page -->
+                <li><a href="{{ url('about_us') }}">About</a> <!-- Modify the 'href' to match your About Us page -->
+                </li>
+
+                <!-- Blog Link: Directs to the Blog page -->
+                <li><a href="{{ url('blog_posts') }}">Blog</a> <!-- Modify the 'href' to match your Blog page -->
+                </li>
+
+                <!-- Volunteer Link: Directs to the Volunteer page -->
+                <li><a href="{{ url('volunteer_posts') }}">Volunteer</a> <!-- Modify the 'href' to match your Volunteer page -->
+                </li>
+
+                <!-- Authentication Links: For logged-in users and those not logged in -->
+                @if (Route::has('login')) <!-- Ensures login links are shown based on authentication status -->
+                    @auth <!-- Shows this section if the user is authenticated -->
+                        <!-- User-specific options (only visible when logged in) -->
+                        <li>
+                            <x-app-layout></x-app-layout> <!-- This is a Laravel Blade component for authenticated users' dashboard or navigation -->
+                        </li>
+                        <!-- My Post Link: Directs to the user's own posts -->
+                        <li><a href="{{ url('my_post') }}">My Post</a> <!-- Modify the 'href' to match the route for the user's posts -->
+                        </li>
+
+                        <!-- Create Post Link: Directs to the page where the user can create new posts -->
+                        <li><a href="{{ url('create_post') }}">Create Post</a> <!-- Modify the 'href' to match the route for creating posts -->
+                        </li>
+
+                        <!-- My Form Link: Directs to the user's own forms -->
+                        <li><a href="{{ url('my_form') }}">My Form</a> <!-- Modify the 'href' to match the route for the user's forms -->
+                        </li>
+
+                        <!-- Create Form Link: Directs to the page where the user can create new forms -->
+                        <li><a href="{{ url('create_form') }}">Create Form</a> <!-- Modify the 'href' to match the route for creating forms -->
+                        </li>
+
+                        <!-- User Profile Link: Directs to the user's profile page -->
+                        <li><a href="{{ url('user_profile') }}">Profile</a> <!-- Modify the 'href' to match the route for the user's profile -->
+                        </li>
+                    @else <!-- Shows this section if the user is not authenticated -->
+                        <!-- Login Link: Directs to the login page -->
+                        <li><a href="{{ route('login') }}">Login</a> <!-- Modify the 'href' to match the login route -->
+                        </li>
+
+                        <!-- Register Link: Directs to the registration page -->
+                        <li><a href="{{ route('register') }}">Register</a> <!-- Modify the 'href' to match the register route -->
+                        </li>
+                    @endauth
+                @endif
+
+                <!-- Optional Dropdowns: Suggested to organize some links -->
+                <!-- Dropdown for "Post": This will include links for viewing, creating, and managing posts -->
+                <!-- Dropdown for "Form": This will include links for viewing, creating, and managing forms -->
+                <!-- You can implement these dropdowns using <li> with nested <ul> tags for better organization -->
+            </ul>
+        </div>
+    </div>
+</div>
+

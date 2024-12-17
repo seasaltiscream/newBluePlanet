@@ -52,24 +52,24 @@
         <!-- Confirmation message -->
 
         <!-- User posts -->
-        @foreach($data as $data)
+        @foreach($data as $post) <!-- Renamed variable to 'post' -->
             <div class="post_design">
                 <!-- Check if there is a YouTube link -->
-                @if($data->video_link)
+                @if($post->video_link)
                     <!-- Display YouTube video thumbnail directly using the URL from the database -->
-                    <img class="img_design" src="{{$data->thumbnail}}" alt="YouTube Thumbnail">
-                    <p class="p_design"><b>Video Link:</b> <a href="{{$data->video_link}}" target="_blank">{{$data->video_link}}</a></p>
+                    <img class="img_design" src="{{$post->thumbnail}}" alt="YouTube Thumbnail">
+                    <p class="p_design"><b>Video Link:</b> <a href="{{$post->video_link}}" target="_blank">{{$post->video_link}}</a></p>
                 @else
                     <!-- Check if an image exists, otherwise use default thumbnail -->
-                    <img class="img_design" src="{{ $data->thumbnail ?? ($data->image ? '/postimage/' . $data->image : '/defaultThumbnail/defaultThumbnail.jpg') }}" alt="Post Image">
+                    <img class="img_design" src="{{ $post->thumbnail ?? ($post->image ? '/postimage/' . $post->image : '/defaultThumbnail/defaultThumbnail.jpg') }}" alt="Post Image">
                 @endif
-                <h3 class="title_design">{{$data->title}}</h3>
-                <p class="p_design">{{$data->description}}</p>
-                <p class="p_design"><b>Status:</b> {{$data->post_status}}</p>
+                <h3 class="title_design">{{$post->title}}</h3>
+                <p class="p_design">{{$post->description}}</p>
+                <p class="p_design"><b>Status:</b> {{$post->post_status}}</p>
 
                 <!-- Buttons to delete or update the post -->
-                <a onclick="return confirm('Are you sure to delete this?')" href="{{url('deleteUserPost', $data->id)}}" class="btn btn-danger">Delete Post</a>
-                <a href="{{url('update_user_post', $data->id)}}" class="btn btn-primary">Update</a>
+                <a onclick="return confirm('Are you sure to delete this?')" href="{{url('deleteUserPost', $post->id)}}" class="btn btn-danger">Delete Post</a>
+                <a href="{{url('update_user_post', $post->id)}}" class="btn btn-primary">Update</a>
             </div>
         @endforeach
         <!-- User posts -->

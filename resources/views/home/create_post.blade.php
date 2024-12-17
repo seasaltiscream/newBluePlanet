@@ -1,9 +1,9 @@
-<!-- a page where u wanna make ur own post -->
-
+<!-- Page to Create a New Post -->
 <!DOCTYPE html>
 <html lang="en">
    <head>
      <style type="text/css">
+        /* Custom CSS Styles */
         .div_design{
             text-align: center;
             padding: 30px;
@@ -29,48 +29,60 @@
         }
      </style>
     
-      <!-- basic -->
+      <!-- Include external CSS for basic styling -->
         @include('home.homecss')
    </head>
    <body>
-        <!-- I forgot pls do note that make sure not to delete the sweetalert -->
+        <!-- Include SweetAlert for pop-up messages (e.g., success or error messages) -->
         @include('sweetalert::alert')
         
       <div class="header_section">
+        <!-- Include header content from home.header -->
         @include('home.header')
 
-      <!-- fields for filling out ur post -->
+      <!-- Form Section to Add a Post -->
       <div class="div_design">
+        <!-- Page Title -->
         <h class="title_design">Add Post</h>
+        
+        <!-- Form for adding a new post -->
         <form action="{{url('user_post')}}" method="POST" enctype="multipart/form-data"> 
-            @csrf <!-- idk what @csrf actually does but dont delete it -->
+            @csrf 
+            <!-- CSRF token for security (DO NOT DELETE this) -->
             
+            <!-- Title input field -->
             <div class="field_design">
                 <label>Title</label>
                  <input type="text" name="title">
             </div>
 
-             <div class="field_design">
+            <!-- Description input field -->
+            <div class="field_design">
                 <label>Description</label>
                  <textarea name="description"></textarea>
             </div>
 
-             <div class="field_design">
+            <!-- Image upload field -->
+            <div class="field_design">
                 <label>Image</label>
                  <input type="file" name="image">
             </div>
 
+            <!-- Video Link (YouTube) input field -->
             <div class="field_design">
                 <label>Video Link (YouTube)</label>
                 <input type="text" name="video_link">
             </div>
 
+            <!-- Submit button to add the post -->
             <div class="field_design">
                 <input type="submit" value="Add Post" class="btn btn-outline-secondary">
             </div>
         </form>
       </div>
-      <!-- ----------------------------------- -->
+      <!-- End of form section -->
   
+       <!-- Include footer content from home.footer -->
        @include('home.footer')
+   </body>
 </html>

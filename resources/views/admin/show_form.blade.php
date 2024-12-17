@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- SweetAlert library for popups -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" 
       integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" 
       crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <!-- Includes admin CSS styles -->
     @include('admin.css')
 
     <style type="text/css">
+      /* Styling for the page title */
       .title_design {
         font-size: 30px;
         font-weight: bold;
@@ -16,6 +19,7 @@
         text-align: center;
       }
 
+      /* Table styling */
       .table_design {
         width: 95%;
         margin: 0 auto;
@@ -24,20 +28,19 @@
         text-align: center;
       }
 
+      /* Table cells styling */
       .table_design th, .table_design td {
         padding: 15px;
         border: 1px solid #dddddd;
         vertical-align: middle;
       }
 
-      .table_design td {
-        word-wrap: break-word;
-      }
-
+      /* Header row styling */
       .tHeader_design {
         background-color: skyblue;
       }
 
+      /* Hover effect for table rows */
       .table_design tr {
         transition: background-color 0.5s ease;
       }
@@ -46,6 +49,7 @@
         background-color: #e9ecef;
       }
 
+      /* Column specific styling */
       .title_column {
         width: 20%;
       }
@@ -65,6 +69,7 @@
         width: 10%;
       }
 
+      /* Button styles */
       .btn {
         padding: 8px 12px;
         border-radius: 5px;
@@ -107,6 +112,7 @@
         background-color: darkblue;
       }
 
+      /* Link styling */
       .link-column a {
         color: #007bff;
         text-decoration: none;
@@ -121,12 +127,13 @@
   </head>
 
   <body>
-    @include('admin.header')
+    @include('admin.header') <!-- Includes the header for the admin page -->
 
     <div class="d-flex align-items-stretch">
-      @include('admin.sidebar')
+      @include('admin.sidebar') <!-- Includes the sidebar for the admin page -->
 
       <div class="page-content">
+        <!-- Success Message after form submission -->
         @if(session()->has('message'))
           <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
@@ -134,10 +141,13 @@
           </div>
         @endif
 
+        <!-- Title for the page -->
         <h1 class="title_design">All Forms</h1>
 
+        <!-- Table displaying all the forms -->
         <table class="table_design">
           <tr class="tHeader_design">
+            <!-- Table headers -->
             <th class="title_column">Form Title</th>
             <th class="description_column">Description</th>
             <th class="creator_column">Creator</th>
@@ -151,6 +161,7 @@
             <th>Reset Image</th>
           </tr>
 
+          <!-- Loop through each form in the $forms collection and display data -->
           @foreach($forms as $form)
             <tr>
               <td class="title_column">{{ $form->name }}</td>
@@ -161,6 +172,7 @@
               </td>
               <td class="status_column">{{ $form->status }}</td>
               <td class="img_column">
+                  <!-- Display form image or default image if not available -->
                   @if($form->image && file_exists(public_path('formImage/' . $form->image)))
                       <img class="img-design" src="{{ asset('formImage/' . $form->image) }}" style="height: 100px; width: 100px; object-fit: cover;">
                   @else
@@ -168,6 +180,7 @@
                   @endif
               </td>
 
+              <!-- Action buttons for deleting, editing, accepting, rejecting, and resetting image -->
               <td>
                 <a href="{{ url('delete_form', $form->id) }}" class="btn btn-danger" onclick="confirmation(event)">Delete</a>
               </td>
@@ -189,8 +202,9 @@
       </div>
     </div>
 
-    @include('admin.footer')
+    @include('admin.footer') <!-- Includes the footer for the admin page -->
 
+    <!-- SweetAlert Confirmation Script -->
     <script type="text/javascript">
       function confirmation(ev) {
         ev.preventDefault();

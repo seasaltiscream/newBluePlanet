@@ -1,86 +1,92 @@
-
-
-<!-- a page where u wanna make ur own form -->
-
-
+<!-- Page to Create a Volunteer Form -->
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- yea basically I gpt the design so -->
-   <head>
-     <style type="text/css">
-        .div_design{
-            text-align: center;
-              padding: 30px;
-        }
+<head>
+   <style type="text/css">
+      /* Custom CSS Styles */
+      .div_design{
+         text-align: center;
+         padding: 30px;
+      }
 
-        .title_design{
-            font-size: 30px;
-            font-weight: bold;
-            color: white;
-            padding: 30px;
-        }
+      .title_design{
+         font-size: 30px;
+         font-weight: bold;
+         color: white;
+         padding: 30px;
+      }
 
-        label{
-            display: inline-block;
-            width: 200px;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-        }
+      label{
+         display: inline-block;
+         width: 200px;
+         color: white;
+         font-size: 18px;
+         font-weight: bold;
+      }
 
-        .field_design{
-            padding: 25px;
-        }
-     </style>
-    
-      <!-- basic -->
-        @include('home.homecss')
-   </head>
-    <!-- idk how bootstrap works so -->
+      .field_design{
+         padding: 25px;
+      }
+   </style>
 
+   <!-- Include external CSS for basic styling -->
+   @include('home.homecss')
+</head>
 
-   <body>
-        @include('sweetalert::alert')
-        
-      <!-- header section start -->
-      <div class="header_section">
-        @include('home.header')
+<body>
+   <!-- Include SweetAlert for pop-up messages (e.g., success or error messages) -->
+   @include('sweetalert::alert')
+   
+   <!-- Header section of the page -->
+   <div class="header_section">
+      <!-- Include header content from home.header -->
+      @include('home.header')
 
-
-      <!-- pretty much the fields for filling out ur form -->
+      <!-- Form to Create a Volunteer Form -->
       <div class="div_design">
-        <h class="title_design">Add Volunteer Form</h>
-        <form action="{{url('user_form')}}" method="POST" enctype="multipart/form-data"> 
+         <!-- Page Title -->
+         <h class="title_design">Add Volunteer Form</h>
+         
+         <!-- Form for adding a new volunteer form -->
+         <form action="{{url('user_form')}}" method="POST" enctype="multipart/form-data"> 
             @csrf 
-            <!-- idk what @csrf actually does but dont delete it -->
+            <!-- CSRF token for security (DO NOT DELETE this) -->
+            
+            <!-- Title input field -->
             <div class="field_design">
-                <label>Title</label>
-                 <input type="text" name="title">
+               <label>Title</label>
+               <input type="text" name="title">
             </div>
 
-             <div class="field_design">
-                <label>Description</label>
-                 <textarea name="description"></textarea>
-            </div>
-
-             <div class="field_design">
-                <label>Link</label>
-                <textarea name="link"></textarea>
-            </div>
-
+            <!-- Description input field -->
             <div class="field_design">
-                <label>Upload Image</label>
-                <input type="file" name="image">
+               <label>Description</label>
+               <textarea name="description"></textarea>
             </div>
 
-
+            <!-- Link input field -->
             <div class="field_design">
-                <input type="submit" value="Add Post" class="btn btn-outline -secondary">
+               <label>Link</label>
+               <textarea name="link"></textarea>
             </div>
-        </form>
+
+            <!-- Image upload field -->
+            <div class="field_design">
+               <label>Upload Image</label>
+               <input type="file" name="image">
+            </div>
+
+            <!-- Submit button to add the form -->
+            <div class="field_design">
+               <input type="submit" value="Add Post" class="btn btn-outline -secondary">
+            </div>
+         </form>
       </div>
-      <!-- -------------------------------------------------- -->
-  
-       @include('home.footer')
+      <!-- End of form section -->
+   </div>
+
+   <!-- Include footer content from home.footer -->
+   @include('home.footer')
+</body>
 </html>

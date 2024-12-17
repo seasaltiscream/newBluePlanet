@@ -3,9 +3,10 @@
 <html>
 <head>
     <base href="/public">
-    @include('admin.css')
+    @include('admin.css') <!-- Include the CSS for the admin layout -->
 
     <style type="text/css">
+        /* Styles for the profile page */
         .title_design {
             font-size: 30px;
             font-weight: bold;
@@ -56,52 +57,44 @@
 </head>
 <body>
 <div class="header_section">
-    @include('admin.header')
+    @include('admin.header') <!-- Include the header section of the admin layout -->
 
     <div class="d-flex align-items-stretch">
-        @include('admin.sidebar')
+        @include('admin.sidebar') <!-- Include the sidebar for navigation -->
 
         <div class="page-content">
-            <!-- @if($user->profile_photo_path)
-                <img class="profile-image" src="{{ asset($user->profile_photo_path) }}" alt="Profile Photo">
-            @else
-                <img class="profile-image" src="{{ asset('public/profileAdmin/defaultProfile.png') }}" alt="Admin Default Avatar">
-            @endif -->
-
-
+            <!-- Profile section -->
             <div class="profile_container">
                 <h1 class="title_design">Admin Profile</h1>
 
-                <!-- Admin Profile Info -->
+                <!-- Display Admin's Username -->
                 <div class="field_design">
                     <label>Username</label>
                     <span class="field_value">{{ $user->name }}</span>
                 </div>
 
+                <!-- Display Admin's Email -->
                 <div class="field_design">
                     <label>Email</label>
                     <span class="field_value">{{ $user->email }}</span>
                 </div>
 
+                <!-- Display Admin's Phone Number -->
                 <div class="field_design">
                     <label>Phone Number</label>
                     <span class="field_value">{{ $user->phone ?? 'Not Provided' }}</span>
                 </div>
 
+                <!-- Display Admin's Role -->
                 <div class="field_design">
                     <label>Role</label>
                     <span class="field_value">Admin</span>
                 </div>
 
-                <!-- <div class="field_design">
-                    <label>Joined on</label>
-                    <span class="field_value">{{ $user->created_at->format('d M, Y') }}</span>
-                </div> -->
-
                 <!-- Profile Picture -->
-                <!-- {{-- Profile picture rendering logic based on user type --}} -->
                 <div class="field_design">
                     <label>Profile Picture</label>
+                    <!-- Check if the user has a profile photo, otherwise show default image -->
                     @if($user->profile_photo_path)
                         <img class="profile-image" src="{{ asset($user->profile_photo_path) }}" alt="Profile Photo">
                     @else
@@ -113,15 +106,13 @@
                     @endif
                 </div>
 
-
-
-                <!-- Password field displayed as **** -->
+                <!-- Password field, display as **** for security -->
                 <div class="field_design">
                     <label>Password</label>
-                    <span class="field_value">****</span>  <!-- Hide password as **** -->
+                    <span class="field_value">****</span>  <!-- Password hidden as **** -->
                 </div>
 
-                <!-- Edit Profile Button -->
+                <!-- Button to edit profile -->
                 <div class="field_design">
                     <a href="{{ url('edit_admin') }}" class="btn_edit">Edit Profile</a>
                 </div>
@@ -130,6 +121,6 @@
         </div>
     </div>
 
-    @include('admin.footer')
+    @include('admin.footer') <!-- Include the footer section of the admin layout -->
 </body>
 </html>
